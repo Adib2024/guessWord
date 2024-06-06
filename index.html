@@ -9,11 +9,20 @@
 <body>
     <div class="container">
         <h1>Guess The Right Word</h1>
+        <label for="difficulty">Select Difficulty:</label>
+        <select id="difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
         <div id="word-container"></div>
         <input type="text" id="guess-input" placeholder="Enter your guess" maxlength="1">
         <button id="guess-button">Guess</button>
+        <button id="hint-button">Hint</button>
         <div id="message"></div>
         <div id="points">Points: 0</div>
+        <div id="high-score">High Score: 0</div>
+        <button id="next-button">Next Word</button>
         <button id="restart-button">Restart</button>
     </div>
     <script src="script.js"></script>

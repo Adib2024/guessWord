@@ -44,3 +44,15 @@ body {
     font-size: 18px;
     color: green;
 }
+
+#hint-button, #next-button, #restart-button {
+    font-size: 18px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+#difficulty {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
