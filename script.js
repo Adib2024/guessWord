@@ -1,8 +1,20 @@
-const words = ["apple", "banana", "cherry"];
+const words = {
+    easy: ["apple", "banana", "cherry", "grape", "lemon", "lime", "mango", "melon", "orange", "peach", "pear", "plum", "berry"],
+    medium: ["elephant", "giraffe", "dolphin", "cheetah", "penguin", "kangaroo", "crocodile", "alligator", "buffalo", "hippopotamus"],
+    hard: ["pomegranate", "rhinoceros", "chrysanthemum", "accommodation", "acknowledgement", "characteristically", "uncharacteristically", "disproportionate", "electromagnetic"]
+};
+let usedWords = {
+    easy: [],
+    medium: [],
+    hard: []
+};
+
 let selectedWord = "";
 let displayWord = [];
 let attempts = 3;
 let points = 0;
+let highScore = 0;
+let difficulty = 'easy';
 
 const wordContainer = document.getElementById("word-container");
 const guessInput = document.getElementById("guess-input");
