@@ -3,6 +3,7 @@ const words = {
     medium: ["elephant", "giraffe", "dolphin", "cheetah", "penguin", "kangaroo", "crocodile", "alligator", "buffalo", "hippopotamus"],
     hard: ["pomegranate", "rhinoceros", "chrysanthemum", "accommodation", "acknowledgement", "characteristically", "uncharacteristically", "disproportionate", "electromagnetic"]
 };
+
 let usedWords = {
     easy: [],
     medium: [],
