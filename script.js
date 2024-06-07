@@ -132,6 +132,8 @@ function giveHint() {
     }
 }
 
+
+
 function updateHighScore() {
     if (points > highScore) {
         highScore = points;
@@ -140,6 +142,12 @@ function updateHighScore() {
 }
 
 guessButton.addEventListener("click", checkGuess);
+guessInput.addEventListener("keypress", (e) => {
+    if (e.key === 'Enter') {
+        checkGuess();
+    }
+});
+
 hintButton.addEventListener("click", giveHint);
 nextButton.addEventListener("click", () => {
     guessButton.disabled = false;
