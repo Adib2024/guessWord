@@ -132,7 +132,12 @@ function giveHint() {
     }
 }
 
-
+function updateHighScore() {
+    if (points > highScore) {
+        highScore = points;
+        highScoreDisplay.textContent = `High Score: ${highScore}`;
+    }
+}
 
 guessButton.addEventListener("click", checkGuess);
 hintButton.addEventListener("click", giveHint);
@@ -144,7 +149,10 @@ nextButton.addEventListener("click", () => {
 });
 
 restartButton.addEventListener("click", () => {
+    points = 0;
     guessButton.disabled = false;
+    hintButton.disabled = false;
+    nextButton.style.display = 'none';
     initializeGame();
 });
 
