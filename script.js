@@ -19,16 +19,34 @@ let difficulty = 'easy';
 const wordContainer = document.getElementById("word-container");
 const guessInput = document.getElementById("guess-input");
 const guessButton = document.getElementById("guess-button");
+const hintButton = document.getElementById("hint-button");
 const message = document.getElementById("message");
 const pointsDisplay = document.getElementById("points");
+const highScoreDisplay = document.getElementById("high-score");
+const nextButton = document.getElementById("next-button");
 const restartButton = document.getElementById("restart-button");
+const difficultySelect = document.getElementById("difficulty");
 
 function initializeGame() {
-    selectedWord = words[Math.floor(Math.random() * words.length)];
+    difficulty = difficultySelect.value;
+    selectedWord = getRandomWord(difficulty);
     displayWord = Array(selectedWord.length).fill("_");
     attempts = 3;
     message.textContent = "";
+    pointsDisplay.textContent = `Points: ${points}`;
+    highScoreDisplay.textContent = `High Score: ${highScore}`;
     updateDisplayWord();
+}
+
+function getRandomWord(difficulty) {
+    const availableWords = words[difficulty].filter(word => !usedWords[difficulty].includes(word));
+    if (availableWords.length === 0) {
+        usedWords[difficulty] = [];
+        return getRandomWord(difficulty);
+    }
+    const randomWord = availableWords[Math.floor(Math.random() * availableWords.length)];
+    usedWords[difficulty].push(randomWord);
+    return randomWord;
 }
 
 function updateDisplayWord() {
@@ -103,5 +121,7 @@ restartButton.addEventListener("click", () => {
     guessButton.disabled = false;
     initializeGame();
 });
+
+difficultySelect.addEventListener("change", initializeGame);
 
 initializeGame();
