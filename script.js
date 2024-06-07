@@ -134,6 +134,16 @@ function giveHint() {
 
 guessButton.addEventListener("click", checkGuess);
 
+
+guessButton.addEventListener("click", checkGuess);
+hintButton.addEventListener("click", giveHint);
+nextButton.addEventListener("click", () => {
+    guessButton.disabled = false;
+    hintButton.disabled = false;
+    nextButton.style.display = 'none';
+    initializeGame();
+});
+
 restartButton.addEventListener("click", () => {
     guessButton.disabled = false;
     initializeGame();
