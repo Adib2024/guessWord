@@ -39,8 +39,8 @@ function checkGuess() {
     const guess = guessInput.value.toLowerCase();
     guessInput.value = "";
 
-    if (guess.length !== 1) {
-        message.textContent = "Please enter a single letter.";
+    if (!/^[a-z]$/.test(guess)) {
+        alert("Please enter a valid letter.");
         return;
     }
 
@@ -53,10 +53,25 @@ function checkGuess() {
         updateDisplayWord();
 
         if (!displayWord.includes("_")) {
-            points += 10;
+            let pointsAdded;
+            switch (difficulty) {
+                case 'easy':
+                    pointsAdded = 10;
+                    break;
+                case 'medium':
+                    pointsAdded = 15;
+                    break;
+                case 'hard':
+                    pointsAdded = 20;
+                    break;
+            }
+            points += pointsAdded;
             pointsDisplay.textContent = `Points: ${points}`;
-            message.textContent = "Congratulations! You guessed the word!";
+            message.textContent = `Congratulations! You guessed the word! You earned ${pointsAdded} points.`;
             guessButton.disabled = true;
+            hintButton.disabled = true;
+            nextButton.style.display = 'inline';
+            updateHighScore();
         }
     } else {
         attempts--;
@@ -66,6 +81,8 @@ function checkGuess() {
         } else {
             message.textContent = `You've run out of attempts. The word was: ${selectedWord}`;
             guessButton.disabled = true;
+            hintButton.disabled = true;
+            nextButton.style.display = 'inline';
         }
     }
 }
