@@ -132,7 +132,6 @@ function giveHint() {
     }
 }
 
-guessButton.addEventListener("click", checkGuess);
 
 
 guessButton.addEventListener("click", checkGuess);
