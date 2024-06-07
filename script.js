@@ -115,6 +115,23 @@ function revealLetter() {
     }
 }
 
+function giveHint() {
+    let unrevealedIndices = [];
+    for (let i = 0; i < selectedWord.length; i++) {
+        if (displayWord[i] === "_") {
+            unrevealedIndices.push(i);
+        }
+    }
+    if (unrevealedIndices.length > 0) {
+        let randomIndex = unrevealedIndices[Math.floor(Math.random() * unrevealedIndices.length)];
+        displayWord[randomIndex] = selectedWord[randomIndex];
+        updateDisplayWord();
+        points -= 2; // Deduct points for using a hint
+        pointsDisplay.textContent = `Points: ${points}`;
+        message.textContent = `Hint used! You lost 2 points.`;
+    }
+}
+
 guessButton.addEventListener("click", checkGuess);
 
 restartButton.addEventListener("click", () => {
